@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WorkBridge – Freelance Jobs & Talent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --primary-soft: #e7f3ff;
+      --accent: #14b8a6;
+      --bg: #f3f4f6;
+      --white: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --danger: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      gap: 1rem;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .brand-name {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+    .nav-search {
+      display: flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #edf2f7;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .nav-search input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 200px;
+      font-size: 0.82rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      align-items: center;
+    }
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+      cursor: pointer;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--primary);
+      transition: width 0.16s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-auth {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 0.32rem 0.9rem;
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .btn-outline {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #fff;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      padding: 1.8rem 0 1.6rem;
+      align-items: center;
+    }
+    .hero-kicker {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+    .hero-highlight {
+      color: var(--primary);
+    }
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      max-width: 430px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+    .hero-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+      min-height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem;
+    }
+    .hero-visual-main {
+      width: 100%;
+      max-width: 360px;
+      height: 210px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid #d1d5db;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      overflow: hidden;
+    }
+    .hero-visual-info {
+      padding: 0.7rem;
+      font-size: 0.8rem;
+    }
+    .hero-visual-info h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    .hero-visual-info p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+    .hero-visual-laptop {
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      position: relative;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0.4rem;
+      font-size: 0.75rem;
+    }
+    .hero-visual-laptop::before {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.4);
+      bottom: 0.25rem;
+      left: 10%;
+    }
+    .hero-laptop-screen {
+      width: 88%;
+      height: 70%;
+      border-radius: 8px 8px 0 0;
+      background: linear-gradient(135deg, #22c55e, #0f766e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 0.3rem;
+    }
+
+    /* LAYOUT */
+    main {
+      padding: 1.4rem 0 2rem;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.7fr);
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .card-header h3 {
+      font-size: 0.95rem;
+    }
+    .card-header small {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* AUTH / PROFILE PANEL */
+    .auth-toggle {
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+    .auth-toggle button {
+      border: none;
+      background: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-size: 0.8rem;
+      text-decoration: underline;
+    }
+    .auth-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.8rem;
+    }
+    .auth-form label {
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 0.1rem;
+    }
+    .auth-form input,
+    .auth-form select,
+    .auth-form textarea {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      padding: 0.34rem 0.5rem;
+      font-size: 0.8rem;
+      outline: none;
+    }
+    .auth-form textarea {
+      resize: vertical;
+      min-height: 50px;
+    }
+    .profile-summary {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #047857;
+      font-size: 0.72rem;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+    }
+    .category-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+    }
+    .category-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* JOBS & FILTERS */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.78rem;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .filter-group select,
+    .filter-group input {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      font-size: 0.78rem;
+      outline: none;
+      background: #fff;
+    }
+
+    .job-card {
+      border-top: 1px solid var(--border);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+    }
+    .job-title {
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+    .job-meta {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .job-tags {
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .job-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+    }
+    .job-footer button {
+      font-size: 0.76rem;
+      padding: 0.22rem 0.7rem;
+    }
+
+    /* PROPOSAL / CONTRACT / MESSAGES */
+    .proposal-list {
+      margin-top: 0.3rem;
+      font-size: 0.78rem;
+    }
+    .proposal-row {
+      border-top: 1px solid var(--border);
+      padding-top: 0.3rem;
+      margin-top: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .proposal-meta span {
+      display: block;
+    }
+    .proposal-meta small {
+      color: var(--muted);
+    }
+    .proposal-status {
+      font-size: 0.72rem;
+      color: var(--primary);
+    }
+
+    .messages {
+      margin-top: 0.3rem;
+      font-size: 0.78rem;
+    }
+    .message-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+      align-items: center;
+    }
+    .message-info span {
+      display: block;
+    }
+    .message-name {
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    .message-preview {
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+    .message-badge {
+      font-size: 0.7rem;
+      color: var(--primary);
+    }
+    .message-compose {
+      margin-top: 0.4rem;
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+    .message-compose input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      font-size: 0.76rem;
+      outline: none;
+    }
+    .message-compose button {
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.76rem;
+      cursor: pointer;
+    }
+
+    .contract-row {
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+      padding-top: 0.3rem;
+      margin-top: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contract-status {
+      font-size: 0.72rem;
+      color: #047857;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-search input {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo">W</div>
+          <span class="brand-name">WorkBridge</span>
+          <div class="nav-search">
+            🔍
+            <input type="text" placeholder="Search jobs, freelancers, or skills…" />
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a onclick="scrollToId('jobs')">Jobs</a>
+          <a onclick="scrollToId('freelancers')">Freelancers</a>
+          <a onclick="scrollToId('messages')">Messages</a>
+        </nav>
+        <div class="nav-auth">
+          <button class="btn btn-outline" onclick="setAuthMode('login')">Log in</button>
+          <button class="btn btn-primary" onclick="setAuthMode('signup')">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-kicker">Freelance work, done right</div>
+          <h1 class="hero-title">
+            Hire top freelancers or
+            <span class="hero-highlight">land your next project</span>.
+          </h1>
+          <p class="hero-sub">
+            A simple Upwork‑style marketplace for real work: post jobs, send proposals, message clients, and manage contracts — fully in the browser UI.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="scrollToId('jobs')">Find a job</button>
+            <button class="btn btn-outline" onclick="scrollToId('freelancers')">Browse freelancers</button>
+          </div>
+          <p class="hero-meta">
+            Front‑end only demo – ready to connect to a real backend (Node, Firebase, or your own API) later.
+          </p>
+        </div>
+        <div class="hero-visual">
+          <!-- Person with laptop (illustrative card) -->
+          <div class="hero-visual-main">
+            <div class="hero-visual-info">
+              <div class="hero-pill">● Featured job</div>
+              <h3>AI Dashboard for E‑commerce</h3>
+              <p>Client: Horizon Labs · Budget: $2,500 fixed · 4–6 weeks</p>
+              <p><strong>Looking for:</strong> React + AI developer who can build an analytics panel with OpenAI integration.</p>
+            </div>
+            <div class="hero-visual-laptop">
+              <div class="hero-laptop-screen">
+                Freelancer working on a laptop – AI code and dashboards for real business work.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORY TABS (OPEN NEW TAB PAGES) -->
+      <div class="card" id="categories">
+        <div class="card-header">
+          <h3>Explore categories</h3>
+          <small>Each category opens in a new tab with info & AI‑style images.</small>
+        </div>
+        <div class="categories">
+          <button class="category-chip" onclick="openCategory('ai-services.html')">
+            🤖 AI Services
+          </button>
+          <button class="category-chip" onclick="openCategory('development.html')">
+            💻 Development & IT
+          </button>
+          <button class="category-chip" onclick="openCategory('design-creative.html')">
+            🎨 Design & Creative
+          </button>
+          <button class="category-chip" onclick="openCategory('sales-marketing.html')">
+            📈 Sales & Marketing
+          </button>
+          <button class="category-chip" onclick="openCategory('writing-translation.html')">
+            ✍️ Writing & Translation
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+      <div class="layout">
+        <!-- LEFT COLUMN: AUTH + PROFILE/CLIENT PANEL -->
+        <section class="left-col" id="freelancers">
+          <div class="card">
+            <div class="card-header">
+              <h3>Sign up / Log in</h3>
+              <small>Manage your freelancer or client profile.</small>
+            </div>
+            <div class="auth-toggle">
+              <span id="authLabel">New here?</span>
+              <button type="button" onclick="toggleAuth()">Switch to login / signup</button>
+            </div>
+            <form class="auth-form" onsubmit="handleAuth(event)">
+              <div>
+                <label for="authRole">I’m a</label>
+                <select id="authRole">
+                  <option value="freelancer">Freelancer</option>
+                  <option value="client">Client / Company</option>
+                </select>
+              </div>
+              <div>
+                <label for="authName">Full name / Company name</label>
+                <input id="authName" type="text" placeholder="e.g. Ali Khan or NextGen Studios" required />
+              </div>
+              <div>
+                <label for="authEmail">Email</label>
+                <input id="authEmail" type="email" placeholder="you@example.com" required />
+              </div>
+              <div>
+                <label for="authPassword">Password</label>
+                <input id="authPassword" type="password" placeholder="At least 8 characters" required />
+              </div>
+              <button class="btn btn-primary" type="submit" style="margin-top:0.2rem;">
+                <span id="authBtnText">Sign up</span>
+              </button>
+            </form>
+
+            <div class="profile-summary">
+              Use this panel to explain how real authentication will work later (JWT, sessions, or Firebase Auth). For now it’s a clean front‑end demo only.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Quick freelancer profile</h3>
+              <span class="badge">Demo only</span>
+            </div>
+            <form class="auth-form" onsubmit="handleProfileSave(event)">
+              <div>
+                <label for="skills">Skills</label>
+                <input id="skills" type="text" placeholder="React, Node, Figma, Copywriting…" />
+              </div>
+              <div>
+                <label for="experience">Experience level</label>
+                <select id="experience">
+                  <option>Entry-level</option>
+                  <option>Intermediate</option>
+                  <option>Expert</option>
+                </select>
+              </div>
+              <div>
+                <label for="hourly">Hourly rate (USD)</label>
+                <input id="hourly" type="number" min="5" step="5" placeholder="35" />
+              </div>
+              <div>
+                <label for="portfolio">Portfolio link</label>
+                <input id="portfolio" type="url" placeholder="https://your-portfolio.com" />
+              </div>
+              <div>
+                <label for="about">About you</label>
+                <textarea id="about" placeholder="Short summary of your expertise and the type of work you’re looking for."></textarea>
+              </div>
+              <button class="btn btn-outline" type="submit">Save profile</button>
+            </form>
+            <small id="profileStatus" style="display:none; font-size:0.75rem; color:var(--accent);">
+              ✓ Profile saved in memory (refresh will clear it).
+            </small>
+          </div>
+        </section>
+
+        <!-- RIGHT / MAIN COLUMN: JOBS, PROPOSALS, MESSAGES, CONTRACTS -->
+        <section class="right-col">
+          <!-- JOB LISTINGS -->
+          <div class="card" id="jobs">
+            <div class="card-header">
+              <h3>Featured jobs</h3>
+              <small>Search, filter by budget & experience, then apply with a proposal.</small>
+            </div>
+
+            <div class="filters">
+              <div class="filter-group">
+                <span>Category</span>
+                <select id="categoryFilter" onchange="applyJobFilters()">
+                  <option value="all">All</option>
+                  <option value="ai">AI Services</option>
+                  <option value="development">Development</option>
+                  <option value="design">Design & Creative</option>
+                  <option value="sales">Sales & Marketing</option>
+                  <option value="writing">Writing & Translation</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <span>Max budget</span>
+                <input id="budgetFilter" type="number" min="0" placeholder="$" oninput="applyJobFilters()" />
+              </div>
+              <div class="filter-group">
+                <span>Experience</span>
+                <select id="experienceFilter" onchange="applyJobFilters()">
+                  <option value="any">Any</option>
+                  <option value="entry">Entry</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="expert">Expert</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <span>Type</span>
+                <select id="typeFilter" onchange="applyJobFilters()">
+                  <option value="any">Any</option>
+                  <option value="hourly">Hourly</option>
+                  <option value="fixed">Fixed</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="jobsList"></div>
+          </div>
+
+          <!-- POST A JOB (CLIENT) -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Post a new job</h3>
+              <small>Clients can share work with budget and deadline.</small>
+            </div>
+            <form class="auth-form" onsubmit="handleJobPost(event)">
+              <div>
+                <label for="jobTitle">Job title</label>
+                <input id="jobTitle" type="text" placeholder="e.g. AI assistant to automate reports" required />
+              </div>
+              <div>
+                <label for="jobCategory">Category</label>
+                <select id="jobCategory">
+                  <option value="ai">AI Services</option>
+                  <option value="development">Development</option>
+                  <option value="design">Design & Creative</option>
+                  <option value="sales">Sales & Marketing</option>
+                  <option value="writing">Writing & Translation</option>
+                </select>
+              </div>
+              <div>
+                <label for="jobType">Type</label>
+                <select id="jobType">
+                  <option value="fixed">Fixed price</option>
+                  <option value="hourly">Hourly</option>
+                </select>
+              </div>
+              <div>
+                <label for="jobBudget">Budget (USD)</label>
+                <input id="jobBudget" type="number" min="1" step="1" placeholder="500" required />
+              </div>
+              <div>
+                <label for="jobDeadline">Deadline</label>
+                <input id="jobDeadline" type="date" />
+              </div>
+              <div>
+                <label for="jobDesc">Description</label>
+                <textarea id="jobDesc" placeholder="Describe scope, deliverables, tools, and expectations."></textarea>
+              </div>
+              <button class="btn btn-outline" type="submit">Post job (demo)</button>
+            </form>
+            <small id="jobPostStatus" style="display:none; font-size:0.75rem; color:var(--accent);">
+              ✓ Job added to this page only — perfect for portfolio demos.
+            </small>
+          </div>
+
+          <!-- PROPOSALS, MESSAGES, CONTRACTS -->
+          <div class="card" id="messages">
+            <div class="card-header">
+              <h3>Proposals, messages & contracts</h3>
+              <small>Front‑end only preview of the workflow.</small>
+            </div>
+
+            <div class="proposal-list" id="proposalList">
+              <strong style="font-size:0.8rem;">Recent proposals</strong>
+              <div class="proposal-row">
+                <div class="proposal-meta">
+                  <span>AI Sales Email Assistant (AI Services)</span>
+                  <small>Proposal by Ayesha · $35/hr · Intermediate</small>
+                </div>
+                <span class="proposal-status">Under review</span>
+              </div>
+              <div class="proposal-row">
+                <div class="proposal-meta">
+                  <span>Landing page redesign (Design & Creative)</span>
+                  <small>Proposal by Usman · $600 fixed · Expert</small>
+                </div>
+                <span class="proposal-status">Shortlisted</span>
+              </div>
+            </div>
+
+            <div class="messages" id="messagesList">
+              <strong style="font-size:0.8rem; display:block; margin-bottom:0.2rem;">Messages</strong>
+              <div class="message-row">
+                <div class="message-info">
+                  <span class="message-name">Client · Horizon Labs</span>
+                  <span class="message-preview">“Can we add one more AI dashboard widget?”</span>
+                </div>
+                <span class="message-badge">New</span>
+              </div>
+              <div class="message-row">
+                <div class="message-info">
+                  <span class="message-name">Freelancer · Sara (AI Dev)</span>
+                  <span class="message-preview">“Contract signed. I’ll start by Monday.”</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="message-compose">
+              <input id="msgInput" type="text" placeholder="Message your client or freelancer with a personal note…" />
+              <button type="button" onclick="sendDemoMessage()">Send</button>
+            </div>
+
+            <div style="margin-top:0.6rem;">
+              <strong style="font-size:0.8rem; display:block; margin-bottom:0.2rem;">Contracts</strong>
+              <div class="contract-row">
+                <span>AI Dashboard for E‑commerce – Fixed $2,500</span>
+                <span class="contract-status">Active · Milestone 1/3</span>
+              </div>
+              <div class="contract-row">
+                <span>Blog content for SaaS – $40/hr</span>
+                <span class="contract-status">Completed</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // --- Auth toggle ---
+    let authMode = "signup";
+    function toggleAuth() {
+      authMode = authMode === "signup" ? "login" : "signup";
+      updateAuthUI();
+    }
+    function setAuthMode(mode) {
+      authMode = mode;
+      updateAuthUI();
+      scrollToId("freelancers");
+    }
+    function updateAuthUI() {
+      const label = document.getElementById("authLabel");
+      const btn = document.getElementById("authBtnText");
+      if (!label || !btn) return;
+      if (authMode === "signup") {
+        label.textContent = "New here?";
+        btn.textContent = "Sign up";
+      } else {
+        label.textContent = "Already using WorkBridge?";
+        btn.textContent = "Log in";
+      }
+    }
+    function handleAuth(e) {
+      e.preventDefault();
+      const name = document.getElementById("authName").value;
+      const email = document.getElementById("authEmail").value;
+      alert(`Demo only: ${authMode === "signup" ? "signed up" : "logged in"} as ${name} (${email}).`);
+    }
+
+    function handleProfileSave(e) {
+      e.preventDefault();
+      const status = document.getElementById("profileStatus");
+      if (status) {
+        status.style.display = "block";
+        setTimeout(() => (status.style.display = "none"), 2500);
+      }
+    }
+
+    // --- Category pages ---
+    function openCategory(file) {
+      // In your project, create ai-services.html, development.html, etc. with info & images.
+      window.open(file, "_blank", "noopener");
+    }
+
+    // --- Jobs data & filters ---
+    const jobs = [
+      {
+        id: 1,
+        title: "AI content generator for product descriptions",
+        client: "NextGen Commerce",
+        category: "ai",
+        type: "fixed",
+        budget: 1200,
+        experience: "intermediate",
+        location: "Remote",
+        tags: "OpenAI · Python · E‑commerce",
+        desc: "Build an AI assistant to write and A/B test product copy for a catalog of 500+ SKUs."
+      },
+      {
+        id: 2,
+        title: "Full‑stack developer for SaaS dashboard",
+        client: "MetricFlow",
+        category: "development",
+        type: "hourly",
+        budget: 60,
+        experience: "expert",
+        location: "Remote · EU time zone preferred",
+        tags: "React · Node.js · Tailwind · REST",
+        desc: "Long‑term collaboration building analytics features and admin tools."
+      },
+      {
+        id: 3,
+        title: "Brand identity & website hero design",
+        client: "Studio North",
+        category: "design",
+        type: "fixed",
+        budget: 900,
+        experience: "intermediate",
+        location: "Hybrid · London",
+        tags: "Figma · Web UI · Logo",
+        desc: "Need a clean hero section, brand system, and a small design system library."
+      },
+      {
+        id: 4,
+        title: "Outbound email specialist for B2B SaaS",
+        client: "PipelineOS",
+        category: "sales",
+        type: "hourly",
+        budget: 45,
+        experience: "intermediate",
+        location: "Remote",
+        tags: "Cold email · HubSpot · Copywriting",
+        desc: "Write and manage outbound sequences, test messaging, and track responses."
+      },
+      {
+        id: 5,
+        title: "Technical writer for API documentation",
+        client: "DataRail",
+        category: "writing",
+        type: "fixed",
+        budget: 1500,
+        experience: "expert",
+        location: "Remote",
+        tags: "API docs · Developer portals",
+        desc: "Create developer‑friendly documentation and onboarding guides for our APIs."
+      }
+    ];
+
+    function renderJobs(list) {
+      const container = document.getElementById("jobsList");
+      if (!container) return;
+      container.innerHTML = "";
+      if (!list.length) {
+        container.innerHTML = `<p style="font-size:0.8rem; color:var(--muted);">No jobs match your filters yet. Try adjusting budget or experience level.</p>`;
+        return;
+      }
+      list.forEach(job => {
+        const div = document.createElement("article");
+        div.className = "job-card";
+        div.innerHTML = `
+          <div class="job-title">${job.title}</div>
+          <div class="job-meta">${job.client} · ${job.location}</div>
+          <div class="job-tags">${job.tags}</div>
+          <div class="job-meta">
+            <strong>${job.type === "hourly" ? "$" + job.budget + "/hr" : "$" + job.budget + " fixed"}</strong>
+            · ${job.experience.charAt(0).toUpperCase() + job.experience.slice(1)} level
+          </div>
+          <div class="job-meta">${job.desc}</div>
+          <div class="job-footer">
+            <span>Posted just now · ${job.category.toUpperCase()}</span>
+            <button class="btn btn-outline" type="button" onclick="applyToJob('${job.title}')">Submit proposal</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function applyJobFilters() {
+      const cat = document.getElementById("categoryFilter").value;
+      const budgetVal = document.getElementById("budgetFilter").value;
+      const exp = document.getElementById("experienceFilter").value;
+      const type = document.getElementById("typeFilter").value;
+
+      const maxBudget = budgetVal ? parseFloat(budgetVal) : Infinity;
+
+      const filtered = jobs.filter(job => {
+        const matchCat = cat === "all" || job.category === cat;
+        const matchBudget =
+          job.type === "hourly"
+            ? job.budget <= maxBudget || !budgetVal
+            : job.budget <= maxBudget || !budgetVal;
+        const matchExp = exp === "any" || job.experience === exp;
+        const matchType = type === "any" || job.type === type;
+        return matchCat && matchBudget && matchExp && matchType;
+      });
+
+      renderJobs(filtered);
+    }
+
+    function handleJobPost(e) {
+      e.preventDefault();
+      const title = document.getElementById("jobTitle").value;
+      const category = document.getElementById("jobCategory").value;
+      const type = document.getElementById("jobType").value;
+      const budget = parseFloat(document.getElementById("jobBudget").value) || 0;
+      const desc = document.getElementById("jobDesc").value || "Client will share details after shortlisting.";
+      const job = {
+        id: Date.now(),
+        title,
+        client: "You (demo client)",
+        category,
+        type,
+        budget,
+        experience: "intermediate",
+        location: "Remote",
+        tags: "New · Demo job",
+        desc
+      };
+      jobs.unshift(job);
+      applyJobFilters();
+      const status = document.getElementById("jobPostStatus");
+      if (status) {
+        status.style.display = "block";
+        setTimeout(() => (status.style.display = "none"), 2500);
+      }
+      e.target.reset();
+    }
+
+    function applyToJob(title) {
+      const list = document.getElementById("proposalList");
+      if (!list) return;
+      const row = document.createElement("div");
+      row.className = "proposal-row";
+      row.innerHTML = `
+        <div class="proposal-meta">
+          <span>${title}</span>
+          <small>Your proposal · $40/hr · Intermediate (demo)</small>
+        </div>
+        <span class="proposal-status">Submitted</span>
+      `;
+      list.prepend(row);
+      alert("Demo proposal submitted for: " + title);
+    }
+
+    // --- Messaging ---
+    function sendDemoMessage() {
+      const input = document.getElementById("msgInput");
+      if (!input) return;
+      const text = input.value.trim();
+      if (!text) return;
+      const list = document.getElementById("messagesList");
+      const row = document.createElement("div");
+      row.className = "message-row";
+      row.innerHTML = `
+        <div class="message-info">
+          <span class="message-name">You</span>
+          <span class="message-preview">${text}</span>
+        </div>
+        <span class="message-badge">Sent</span>
+      `;
+      list.prepend(row);
+      input.value = "";
+    }
+
+    // --- Helpers ---
+    function scrollToId(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Init
+    updateAuthUI();
+    renderJobs(jobs);
+  </script>
+</body>
+</html>
